@@ -12,6 +12,9 @@ let package = Package(
     .library(
       name: "MLKitFaceDetection",
       targets: ["MLKitFaceDetection", "MLImage", "MLKitVision", "Common"]),
+    .library(
+      name: "MLKitImageLabeling",
+      targets: ["MLKitImageLabeling", "MLImage", "MLKitImageLabelingCommon", "MLKitVision", "VisionKit", "Common"])
   ],
   dependencies: [
     .package(url: "https://github.com/google/promises.git", from: "2.1.1"),
@@ -26,11 +29,25 @@ let package = Package(
       name: "MLKitBarcodeScanning", url: "https://github.com/d-date/google-mlkit-swiftpm/releases/download/3.2.0/MLKitBarcodeScanning.xcframework.zip", checksum: "93cf8f4cbda516f0db4895e951a9430e07f8b3d44b55d2193fbd079e27d2f5fa"),
     .binaryTarget(name: "MLKitCommon", url: "https://github.com/d-date/google-mlkit-swiftpm/releases/download/3.2.0/MLKitCommon.xcframework.zip", checksum: "50e1c24fc66b9a5b0516dccee5a27bca226e4f41f661799fc96873b572b51417"),
     .binaryTarget(name: "MLKitFaceDetection", url: "https://github.com/d-date/google-mlkit-swiftpm/releases/download/3.2.0/MLKitFaceDetection.xcframework.zip", checksum: "dbdc769316aa27e316a6404ee9cac847265e0ba6a164f680d10aaa192978fdfb"),
+    .binaryTarget(name: "MLKitImageLabeling", url: "https://github.com/nemesis/google-mlkit-swiftpm/releases/download/v3.2.0-test/MLKitImageLabeling.xcframework.zip", checksum: "799e2cb527a427e07e7e53e3900e1a4d70780d0236cbf241202cb84f641643ef"),
+    .binaryTarget(name: "MLKitImageLabelingCommon", url: "https://github.com/nemesis/google-mlkit-swiftpm/releases/download/v3.2.0-test/MLKitImageLabelingCommon.xcframework.zip", checksum: "c6279843b27ff5048b230ab6c46880156a78ec19346b8a21e53136a180f5f713"),
+    .binaryTarget(name: "MLKitObjectDetectionCommon", url: "https://github.com/nemesis/google-mlkit-swiftpm/releases/download/v3.2.0-test/MLKitObjectDetectionCommon.xcframework.zip", checksum: "9bd851b3f0315ef3fe6601cd464b59b50971ff8f028bfff3ab0a0e561fc1580d"),
     .binaryTarget(name: "MLKitVision", url: "https://github.com/d-date/google-mlkit-swiftpm/releases/download/3.2.0/MLKitVision.xcframework.zip", checksum: "19acaf1d993c6911bca9684364d47362cd8ff30ee2609f02a5f94d5143e64edb"),
+    .binaryTarget(name: "MLKitVisionKit", url: "https://github.com/nemesis/google-mlkit-swiftpm/releases/download/v3.2.0-test/MLKitVisionKit.xcframework.zip", checksum: "692bb77f4c4025c23637fa25c7d0e2fdcb9a7541f776d825052cf7af45b5c75a"),
     .binaryTarget(name: "GoogleToolboxForMac", url: "https://github.com/d-date/google-mlkit-swiftpm/releases/download/3.2.0/GoogleToolboxForMac.xcframework.zip", checksum: "6f2e01c3fada4c9a92f45cd83374716026cb5aebf4fed1f74bdd3eba9e9d83bc"),
     .binaryTarget(
       name: "GoogleUtilitiesComponents", url: "https://github.com/d-date/google-mlkit-swiftpm/releases/download/3.2.0/GoogleUtilitiesComponents.xcframework.zip", checksum: "e9b4e629a140234cee5f4da292219c32f3212fc1fce23c773043e10692abb14d"),
     .binaryTarget(name: "Protobuf", url: "https://github.com/d-date/google-mlkit-swiftpm/releases/download/3.2.0/Protobuf.xcframework.zip", checksum: "e411598ad55b7a74bdec956e67fd7e6b453fcd4267c0f7ccfdfad0952a220cbd"),
+    .target(
+      name: "VisionKit",
+      dependencies: [
+        "Common",
+        "MLKitVisionKit",
+        "MLKitImageLabelingCommon",
+        "MLKitObjectDetectionCommon",
+        "MLKitVision"
+      ]
+    ),
     .target(
       name: "Common",
       dependencies: [
