@@ -17,13 +17,9 @@ let package = Package(
     .library(
       name: "MLKitImageLabeling",
       targets: [
-        "MLKitImageLabeling",
+        "ImageLabeling",
         "MLImage",
-        "MLKitImageLabelingCommon",
-        "MLKitObjectDetectionCommon",
-        "MLKitVision",
         "Common",
-        "MLKitVisionKit",
       ]
     ),
   ],
@@ -76,7 +72,7 @@ let package = Package(
       checksum: "bff6d13cf7f6f75c0f673f34921f1a386b795dd4864fb611babd76f65f3f05ce"
     ),
     .binaryTarget(
-      name: "MLKitVisionKit",
+      name: "MLKitVisionKitB",
       url: "https://github.com/nemesis/google-mlkit-swiftpm/releases/download/v3.2.0-image-labeling/MLKitVisionKit.xcframework.zip",
       checksum: "e521a8d80b96b5f16cf153126ed0934bbec086bc712baf8dc061d0741744c5b2"
     ),
@@ -94,6 +90,20 @@ let package = Package(
       name: "Protobuf",
       url: "https://github.com/nemesis/google-mlkit-swiftpm/releases/download/v3.2.0-image-labeling/Protobuf.xcframework.zip",
       checksum: "b030311c8cc886ea8ca43c58da93845e0aaccb6b216a2bf6d7b025f1380ab1d1"
+    ),
+    .target(
+      name: "ImageLabeling",
+      dependencies: [
+        "MLKitImageLabeling",
+        "MLKitCommon",
+        "MLKitImageLabelingCommon",
+        "MLKitVision",
+        "MLKitVisionKit",
+      ]
+    ),
+    .target(
+      name: "MLKitVisionKit",
+      dependencies: ["MLKitVisionKitB", "MLKitCommon", "MLKitImageLabelingCommon", "MLKitObjectDetectionCommon", "MLKitVision"]
     ),
     .target(
       name: "Common",
