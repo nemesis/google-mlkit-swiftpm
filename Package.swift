@@ -14,7 +14,7 @@ let package = Package(
       targets: ["MLKitFaceDetection", "MLImage", "MLKitVision", "Common"]),
     .library(
       name: "MLKitImageLabeling",
-      targets: ["MLKitImageLabeling", "MLKitImageLabelingCommon", "MLKitObjectDetectionCommon",  "MLImage", "MLKitVision", "MLKitVisionKit", "Common"]),
+      targets: ["MLKitImageLabeling", "MLImage", "VisionKit", "Common"]),
   ],
   dependencies: [
     .package(url: "https://github.com/google/promises.git", from: "2.1.1"),
@@ -38,6 +38,15 @@ let package = Package(
     .binaryTarget(
       name: "GoogleUtilitiesComponents", url: "https://github.com/nemesis/google-mlkit-swiftpm/releases/download/v3.2.0-image-labeling/GoogleUtilitiesComponents.xcframework.zip", checksum: "c93cc200f4b652244c68c6094163029e70df5657d5b6a985d592c767a6bc3543"),
     .binaryTarget(name: "Protobuf", url: "https://github.com/nemesis/google-mlkit-swiftpm/releases/download/v3.2.0-image-labeling/Protobuf.xcframework.zip", checksum: "b030311c8cc886ea8ca43c58da93845e0aaccb6b216a2bf6d7b025f1380ab1d1"),
+    .target(
+      name: "VisionKit",
+      dependencies: [
+        "MLKitCommon",
+        "MLKitImageLabelingCommon",
+        "MLKitObjectDetectionCommon",
+        "MLKitVision"
+      ]
+    ),
     .target(
       name: "Common",
       dependencies: [
