@@ -1,5 +1,6 @@
 //
 
 import Foundation
+import MLKitImageLabeling
+import MLKitVision
 
-//@_exported import MLKitImageLabeling

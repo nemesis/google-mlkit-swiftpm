@@ -17,8 +17,10 @@ let package = Package(
     .library(
       name: "MLKitImageLabeling",
       targets: [
-        "ImageLabeling",
+        "MLKitImageLabeling",
         "MLImage",
+        "MLKitVision",
+        "MLKitVisionKit",
         "Common",
       ]
     ),
@@ -90,16 +92,6 @@ let package = Package(
       name: "Protobuf",
       url: "https://github.com/nemesis/google-mlkit-swiftpm/releases/download/v3.2.0-image-labeling/Protobuf.xcframework.zip",
       checksum: "b030311c8cc886ea8ca43c58da93845e0aaccb6b216a2bf6d7b025f1380ab1d1"
-    ),
-    .target(
-      name: "ImageLabeling",
-      dependencies: [
-        "MLKitImageLabeling",
-        "MLKitCommon",
-        "MLKitImageLabelingCommon",
-        "MLKitVision",
-        "MLKitVisionKit",
-      ]
     ),
     .target(
       name: "MLKitVisionKit",
