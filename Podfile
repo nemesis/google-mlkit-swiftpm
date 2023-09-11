@@ -5,6 +5,7 @@ install! 'cocoapods', integrate_targets: false
 target 'MLKit' do
   use_frameworks!
   pod 'GoogleMLKit/FaceDetection', '~> 3.2.0'
+  pod 'GoogleMLKit/ImageLabeling', '~> 3.2.0'
   pod 'GoogleMLKit/BarcodeScanning', '~> 3.2.0'
 end
 

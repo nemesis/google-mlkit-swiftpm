@@ -54,6 +54,18 @@ create-xcframework: bootstrap-builder build-cocoapods
 	-ios ./Pods/MLKitCommon/Frameworks/MLKitCommon.framework \
 	-output GoogleMLKit
 	@xcframework-maker/.build/release/make-xcframework \
+	-ios ./Pods/MLKitImageLabeling/Frameworks/MLKitImageLabeling.framework \
+	-output GoogleMLKit
+	@xcframework-maker/.build/release/make-xcframework \
+	-ios ./Pods/MLKitImageLabelingCommon/Frameworks/MLKitImageLabelingCommon.framework \
+	-output GoogleMLKit
+	@xcframework-maker/.build/release/make-xcframework \
+	-ios ./Pods/MLKitObjectDetectionCommon/Frameworks/MLKitObjectDetectionCommon.framework \
+	-output GoogleMLKit
+	@xcframework-maker/.build/release/make-xcframework \
+	-ios ./Pods/MLKitVisionKit/Frameworks/MLKitVisionKit.framework \
+	-output GoogleMLKit
+	@xcframework-maker/.build/release/make-xcframework \
 	-ios ./Pods/MLKitFaceDetection/Frameworks/MLKitFaceDetection.framework \
 	-output GoogleMLKit
 	@xcframework-maker/.build/release/make-xcframework \
@@ -81,5 +93,15 @@ archive: create-xcframework
 	 && ar r MLKitFaceDetection MLKitFaceDetection.o \
 	 && ranlib MLKitFaceDetection \
 	 && rm MLKitFaceDetection.o
+	@cd ./GoogleMLKit/MLKitImageLabeling.xcframework/ios-arm64/MLKitImageLabeling.framework \
+	 && mv MLKitImageLabeling MLKitImageLabeling.o \
+	 && ar r MLKitImageLabeling MLKitImageLabeling.o \
+	 && ranlib MLKitImageLabeling \
+	 && rm MLKitImageLabeling.o
+	@cd ./GoogleMLKit/MLKitImageLabeling.xcframework/ios-x86_64-simulator/MLKitImageLabeling.framework \
+	 && mv MLKitImageLabeling MLKitImageLabeling.o \
+	 && ar r MLKitImageLabeling MLKitImageLabeling.o \
+	 && ranlib MLKitImageLabeling \
+	 && rm MLKitImageLabeling.o
 .PHONY:
 run: archive
